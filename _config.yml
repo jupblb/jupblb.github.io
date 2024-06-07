@@ -1,0 +1,23 @@
+title: That blog you have just entered
+email: blog@kielbowi.cz
+description: >-
+  A playground to improve on my writing
+
+baseurl: ""
+url: "https://jupblb.github.io"
+tagline: ""
+
+github_username: jupblb
+linkedin_username: mkielbowicz
+
+show_excerpts: true
+
+theme: minima
+plugins:
+  - jekyll-feed
+
+minima:
+  skin: classic
+
+feed:
+  excerpt_only: true
