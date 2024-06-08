@@ -1,4 +1,4 @@
-name: docblog-fetch
+name: docblog
 on:
   schedule:
   - cron: "*/5 * * * *" # At every 5th minute
@@ -29,9 +29,14 @@ jobs:
     - uses: google-github-actions/setup-gcloud@v2
     - name: 'Use gcloud CLI'
       run: gcloud info
+    - name: 'Clear website'
+      run: |
+        cd "$GITHUB_WORKSPACE/website"
+        rm -f _posts/*.html
     - name: 'Run docblog'
       run: |
-        cd "$GITHUB_WORKSPACE/docblog" && go run cmd/docblog/main.go \
+        cd "$GITHUB_WORKSPACE/docblog"
+        go run cmd/docblog/main.go \
           --gemini-api-key ${{ secrets.GEMINI_API_KEY }} \
           --assets-output ../website/ \
           --assets-prefix assets \
