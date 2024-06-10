@@ -9,11 +9,13 @@ jobs:
       contents: 'read'
       id-token: 'write'
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout jupblb/docblog
+      uses: actions/checkout@v4
       with:
         repository: jupblb/docblog
         path: docblog
-    - uses: actions/checkout@v4
+    - name: Checkout jupblb/jupblb.github.io (website)
+      uses: actions/checkout@v4
       with:
         repository: jupblb/jupblb.github.io
         path: website
@@ -27,8 +29,6 @@ jobs:
         project_id: docblog-424619
         credentials_json: ${{ secrets.GOOGLE_CLOUD_SERVICE_ACCOUNT_KEY }}
     - uses: google-github-actions/setup-gcloud@v2
-    - name: 'Use gcloud CLI'
-      run: gcloud info
     - name: 'Clear website'
       run: |
         cd "$GITHUB_WORKSPACE/website"
@@ -43,7 +43,8 @@ jobs:
           --credentials ${{ steps.gcloud_auth.outputs.credentials_file_path }} \
           --posts-output ../website/_posts \
           ${{ vars.GOOGLE_DRIVE_ID }}
-    - uses: creyD/prettier_action@v4.3
+    - name: 'Format HTML posts'
+      uses: creyD/prettier_action@v4.3
       with:
         prettier_options: --write ${{ github.workspace }}/website/_posts/*.html
     # https://stackoverflow.com/a/58393457/2900417
