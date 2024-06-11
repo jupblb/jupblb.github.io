@@ -14,6 +14,7 @@ jobs:
       with:
         repository: jupblb/docblog
         path: docblog
+        token: ${{ secrets.PAT }}
     - name: Checkout jupblb/jupblb.github.io (website)
       uses: actions/checkout@v4
       with:
