@@ -735,11 +735,27 @@ title: Writing my blog using Google Docs
         line-height: 1.15;
         orphans: 2;
         widows: 2;
-        height: 11pt;
         text-align: left;
       "
     >
-      <span style="text-decoration: none; vertical-align: baseline"></span>
+      <span
+        >This blog website is hosted using GitHub Pages. I wrote a simple </span
+      ><span
+        style="
+          text-decoration-skip-ink: none;
+          -webkit-text-decoration-skip: none;
+          text-decoration: underline;
+        "
+        ><a
+          href="https://github.com/jupblb/jupblb.github.io/blob/main/.github/workflows/docblog.yaml"
+          style="text-decoration: inherit"
+          >scheduled GitHub Action</a
+        ></span
+      ><span> that repeatedly runs </span><span>docblog</span
+      ><span
+        > and pushes any changes to the git repository, which in turn triggers
+        build and deployment of the content.</span
+      >
     </p>
     <hr style="width: 33%; height: 1px" />
     <div>
